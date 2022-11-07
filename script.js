@@ -1,5 +1,5 @@
 const calculator = {
-  displayValue: '0',
+  displayValue: "0",
   firstOperand: null,
   waitingForSecondOperand: false,
   operator: null,
@@ -12,7 +12,8 @@ function inputDigit(digit) {
     calculator.displayValue = digit;
     calculator.waitingForSecondOperand = false;
   } else {
-    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+    calculator.displayValue =
+      displayValue === "0" ? digit : displayValue + digit;
   }
 
   console.log(calculator);
@@ -20,27 +21,26 @@ function inputDigit(digit) {
 
 function inputDecimal(dot) {
   if (calculator.waitingForSecondOperand === true) {
-  	calculator.displayValue = "0."
+    calculator.displayValue = "0.";
     calculator.waitingForSecondOperand = false;
-    return ;
+    return;
   }
 
   if (!calculator.displayValue.includes(dot)) {
     calculator.displayValue += dot;
   }
 
-  console.log('decimal', target.value);
+  console.log("decimal", target.value);
 }
 
 function handleOperator(nextOperator) {
-  const { firstOperand, displayValue, operator } = calculator
+  const { firstOperand, displayValue, operator } = calculator;
   const inputValue = parseFloat(displayValue);
-  
-  if (operator && calculator.waitingForSecondOperand)  {
-    calculator.operator = nextOperator;
-    return ;
-  }
 
+  if (operator && calculator.waitingForSecondOperand) {
+    calculator.operator = nextOperator;
+    return;
+  }
 
   if (firstOperand == null && !isNaN(inputValue)) {
     calculator.firstOperand = inputValue;
@@ -58,55 +58,53 @@ function handleOperator(nextOperator) {
 }
 
 function calculate(firstOperand, secondOperand, operator) {
-  if (operator === '+') {
+  if (operator === "+") {
     return firstOperand + secondOperand;
-  } else if (operator === '-') {
+  } else if (operator === "-") {
     return firstOperand - secondOperand;
-  } else if (operator === '*') {
+  } else if (operator === "*") {
     return firstOperand * secondOperand;
-  } else if (operator === '/') {
+  } else if (operator === "/") {
     return firstOperand / secondOperand;
   }
 
-  return  firstOperand, operator, secondOperand;
+  return firstOperand, operator, secondOperand;
 }
 
 function resetCalculator() {
-  calculator.displayValue = '0';
+  calculator.displayValue = "0";
   calculator.firstOperand = null;
   calculator.waitingForSecondOperand = false;
   calculator.operator = null;
-
-  console.log('all clear');
 }
 
 function updateDisplay() {
-  const display = document.querySelector('.calculator-screen');
+  const display = document.querySelector(".calculator-screen");
   display.value = calculator.displayValue;
 }
 
 updateDisplay();
 
-const keys = document.querySelector('.calculator-keys');
-keys?.addEventListener('click', event => {
+const keys = document.querySelector(".calculator-keys");
+keys?.addEventListener("click", (event) => {
   const { target } = event;
   const { value } = target;
-  if (!target.matches('button')) {
+  if (!target.matches("button")) {
     return;
   }
 
   switch (value) {
-    case '+':
-    case '-':
-    case '*':
-    case '/':
-    case '=':
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "=":
       handleOperator(value);
       break;
-    case '.':
+    case ".":
       inputDecimal(value);
       break;
-    case 'all-clear':
+    case "all-clear":
       resetCalculator();
       break;
     default:
@@ -115,6 +113,6 @@ keys?.addEventListener('click', event => {
       }
   }
 
-  console.log('digit', target.value);
+  console.log("digit", target.value);
   updateDisplay();
 });
