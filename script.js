@@ -113,6 +113,6 @@ keys?.addEventListener("click", (event) => {
       }
   }
 
-  console.log("digit", target.value);
+  console.log(target.value);
   updateDisplay();
 });
