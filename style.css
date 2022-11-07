@@ -1,60 +1,81 @@
-body{
+*,
+*::before,
+*::after{
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #33FF57, #33FFBD);
-    text-align: center;
+    box-sizing: inherit;
 }
 
-html,
-body{
-    height: 100%;
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
 }
 
-.container{
-    background-color: white;
-    height: 30rem;
-    width: 22rem;
-    justify-items: center;
-    border-radius: 19px;
-}
-
-.mx-auto{
-    margin: auto;
-    margin-top: 3rem;
-}
-
-.flex{
-    display: flex;
-}
-
-.flex-col{
-    flex-direction: column;
-}
-
-.items-center{
-    align-items: center;
-    justify-content: center;
-}
-
-.button{
-    width: 66px;
-    padding: 20px;
-    margin: 0 3px;
-    border: 2px solid black;
-    border-radius: 9px;
-    cursor: pointer;
-    font-weight: 700;
-}
-
-.row{
-    margin: 8px 0;
-}
-
-.row input{
-    width: 290px;
-    font-size: 19px;
-    margin: 0;
-    padding: 10px 0px;
-    border: 2px solid black;
+.Calculator{
+    border: 1px solid #ccc;
     border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+.calculator-screen{
+    width: 100%;
+    font-size: 5rem;
+    height: 80px;
+    border: none;
+    background-color: #252525;
+    color: #fff;
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+button {
+    height: 60px;
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #c4c4c4;
+    background-color: transparent;
+    font-size: 2rem;
+    color: #333;
+}
+
+button:hover{
+    background-color: #eaeaea;
+}
+
+.operator{
+    color: #337cac;
+}
+
+.all-clear{
+    background-color: #f0595f;
+    border-color: #b0353a;
+    color: #fff;
+}
+
+.all-clear:hover{
+    background-color: #f17377;
+}
+
+.equal-sign{
+    background-color: #2e86c0;
+    border-color: #337cac;
+    color: #fff;
+    height: 100%;
+    grid-area: 2 / 4 / 6 / 5;
+}
+
+.equal-sign:hover{
+    background-color: #4e9ed4;
 }
