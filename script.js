@@ -68,7 +68,7 @@ function calculate(firstOperand, secondOperand, operator) {
     return firstOperand / secondOperand;
   }
 
-  return firstOperand, operator, secondOperand;
+  return secondOperand;
 }
 
 function resetCalculator() {
